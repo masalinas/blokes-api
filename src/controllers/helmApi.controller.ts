@@ -85,7 +85,7 @@ export class HelmApiController {
     @param({ name: 'filter', description: 'Command filter', in: 'query' }) filter?: String
   ): Promise<Object> {
     try {
-      return await helm.list(flags, filter);
+      return { response: await helm.list(flags, filter) };
     } catch (error) {
       throw new HttpErrors.UnorderedCollection(error.message);
     }
